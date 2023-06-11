@@ -4,6 +4,37 @@ import {TextGeometry} from "three/examples/jsm/geometries/TextGeometry"
 // Scene
 const scene = new THREE.Scene();
 
+var viewText = 'Redux WorkFlow';
+
+// Create a canvas element to render the text onto
+var canvas = document.createElement('canvas');
+var context = canvas.getContext('2d');
+context.font = 'Bold 35px Arial';
+context.fillStyle = 'white';
+context.fillText(viewText, 10, 80); // adjust the position based on your needs
+
+// Create a texture from the canvas
+var texture = new THREE.CanvasTexture(canvas);
+
+// Create a material for the text
+var textMaterial = new THREE.MeshBasicMaterial({
+  map: texture,
+  transparent: true
+});
+
+// Create a plane geometry to display the text
+var textGeometry = new THREE.PlaneGeometry(40, 30);
+
+// Create a mesh for the text
+var textMesh = new THREE.Mesh(textGeometry, textMaterial);
+
+// Position and rotate the mesh to attach it to the cube
+textMesh.position.set(8, 20, 0); // position relative to center of cube
+textMesh.rotation.x = - Math.PI / 18
+textMesh.rotation.y =  Math.PI / 4
+// Add both the cube and the text to the scene
+scene.add(textMesh);
+
 const y_bias = -5;
 // Add a cube to the scene
 
