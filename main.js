@@ -11,7 +11,7 @@ const loader = new THREE.TextureLoader();
 // load a texture
 loader.load(
   // resource URL
-  './static/1.jpg',
+  './static/2.png',
 
   // onLoad callback
   function (texture) {
